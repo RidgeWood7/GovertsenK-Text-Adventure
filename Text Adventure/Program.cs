@@ -1,4 +1,5 @@
-﻿using System.Diagnostics.Metrics;
+﻿using System;
+using System.Diagnostics.Metrics;
 using System.Drawing;
 using System.Globalization;
 using System.Runtime.CompilerServices;
@@ -13,12 +14,13 @@ namespace Text_Adventure //Entamaphobia
         static void end()
         {
             Thread.Sleep(900);
-        }
+            Console.Write("\n");
+        }//900
         static void comma()
         {
             Thread.Sleep(500);
-        }
-        static void lbl(string text, int delay = 48)
+        }//500
+        static void lbl(string text, int delay = 48)//regular w/ dark grey color of text ALL ARE 48 Speed
         {
             text = textInfo.ToTitleCase(text);
 
@@ -29,7 +31,7 @@ namespace Text_Adventure //Entamaphobia
                 Thread.Sleep(delay);
             }
         }
-        static void plainlbl(string text, int delay = 48)
+        static void plainlbl(string text, int delay = 48)//no color change
         {
             text = textInfo.ToTitleCase(text);
 
@@ -39,7 +41,7 @@ namespace Text_Adventure //Entamaphobia
                 Thread.Sleep(delay);
             }
         }
-        static void albl(string text, int delay = 45)
+        static void albl(string text, int delay = 45)//grey for lightbulb level
         {
             text = textInfo.ToTitleCase(text);
 
@@ -51,7 +53,7 @@ namespace Text_Adventure //Entamaphobia
                 Console.ForegroundColor = ConsoleColor.DarkGray;
             }
         }
-        static void plbl(string text, int delay = 45)
+        static void plbl(string text, int delay = 45)//player text
         {
             text = textInfo.ToTitleCase(text);
 
@@ -63,6 +65,8 @@ namespace Text_Adventure //Entamaphobia
                 Console.ForegroundColor= ConsoleColor.DarkGray;
             }
         }
+
+
         static void Main(string[] args)
         {
             Console.Beep(100,1000);
@@ -70,7 +74,7 @@ namespace Text_Adventure //Entamaphobia
             Console.WindowWidth = 150;
             Console.CursorVisible = false;
             //intro();
-            choices001();
+            start();
         }
 
         private static void intro()
@@ -271,34 +275,27 @@ namespace Text_Adventure //Entamaphobia
             Thread.Sleep(250);
 
             Console.WriteLine("------------------------------------------------------------------------------------------------------------------------------------------------------");
-            Console.WriteLine("\t\t  ▓█████  ███▄    █ ▄▄▄█████▓ ▄▄▄       ███▄ ▄███▓ ▄▄▄       ██▓███   ██░ ██  ▒█████   ▄▄▄▄    ██▓ ▄▄▄      \r\n\t\t  ▓█   ▀  ██ ▀█   █ ▓  ██▒ ▓▒▒████▄    ▓██▒▀█▀ ██▒▒████▄    ▓██░  ██▒▓██░ ██▒▒██▒  ██▒▓█████▄ ▓██▒▒████▄    \r\n\t\t  ▒███   ▓██  ▀█ ██▒▒ ▓██░ ▒░▒██  ▀█▄  ▓██    ▓██░▒██  ▀█▄  ▓██░ ██▓▒▒██▀▀██░▒██░  ██▒▒██▒ ▄██▒██▒▒██  ▀█▄  \r\n\t\t  ▒▓█  ▄ ▓██▒  ▐▌██▒░ ▓██▓ ░ ░██▄▄▄▄██ ▒██    ▒██ ░██▄▄▄▄██ ▒██▄█▓▒ ▒░▓█ ░██ ▒██   ██░▒██░█▀  ░██░░██▄▄▄▄██ \r\n\t\t  ░▒████▒▒██░   ▓██░  ▒██▒ ░  ▓█   ▓██▒▒██▒   ░██▒ ▓█   ▓██▒▒██▒ ░  ░░▓█▒░██▓░ ████▓▒░░▓█  ▀█▓░██░ ▓█   ▓██▒\r\n\t\t  ░░ ▒░ ░░ ▒░   ▒ ▒   ▒ ░░    ▒▒   ▓▒█░░ ▒░   ░  ░ ▒▒   ▓▒█░▒▓▒░ ░  ░ ▒ ░░▒░▒░ ▒░▒░▒░ ░▒▓███▀▒░▓   ▒▒   ▓▒█░\r\n\t\t   ░ ░  ░░ ░░   ░ ▒░    ░      ▒   ▒▒ ░░  ░      ░  ▒   ▒▒ ░░▒ ░      ▒ ░▒░ ░  ░ ▒ ▒░ ▒░▒   ░  ▒ ░  ▒   ▒▒ ░\r\n\t\t     ░      ░   ░ ░   ░        ░   ▒   ░      ░     ░   ▒   ░░        ░  ░░ ░░ ░ ░ ▒   ░    ░  ▒ ░  ░   ▒   \r\n\t\t     ░  ░         ░                ░  ░       ░         ░  ░          ░  ░  ░    ░ ░   ░       ░        ░  ░\r\n\t\t                                                                                            ░               ");
+            Console.WriteLine("\t\t\t  ██▓███   ██░ ██  ▒█████   ▄▄▄▄    ▒█████   ██▓███   ██░ ██  ▒█████   ▄▄▄▄    ██▓ ▄▄▄      \r\n\t\t\t  ▓██░  ██▒▓██░ ██▒▒██▒  ██▒▓█████▄ ▒██▒  ██▒▓██░  ██▒▓██░ ██▒▒██▒  ██▒▓█████▄ ▓██▒▒████▄    \r\n\t\t\t  ▓██░ ██▓▒▒██▀▀██░▒██░  ██▒▒██▒ ▄██▒██░  ██▒▓██░ ██▓▒▒██▀▀██░▒██░  ██▒▒██▒ ▄██▒██▒▒██  ▀█▄  \r\n\t\t\t  ▒██▄█▓▒ ▒░▓█ ░██ ▒██   ██░▒██░█▀  ▒██   ██░▒██▄█▓▒ ▒░▓█ ░██ ▒██   ██░▒██░█▀  ░██░░██▄▄▄▄██ \r\n\t\t\t  ▒██▒ ░  ░░▓█▒░██▓░ ████▓▒░░▓█  ▀█▓░ ████▓▒░▒██▒ ░  ░░▓█▒░██▓░ ████▓▒░░▓█  ▀█▓░██░ ▓█   ▓██▒\r\n\t\t\t  ▒▓▒░ ░  ░ ▒ ░░▒░▒░ ▒░▒░▒░ ░▒▓███▀▒░ ▒░▒░▒░ ▒▓▒░ ░  ░ ▒ ░░▒░▒░ ▒░▒░▒░ ░▒▓███▀▒░▓   ▒▒   ▓▒█░\r\n\t\t\t  ░▒ ░      ▒ ░▒░ ░  ░ ▒ ▒░ ▒░▒   ░   ░ ▒ ▒░ ░▒ ░      ▒ ░▒░ ░  ░ ▒ ▒░ ▒░▒   ░  ▒ ░  ▒   ▒▒ ░\r\n\t\t\t  ░░        ░  ░░ ░░ ░ ░ ▒   ░    ░ ░ ░ ░ ▒  ░░        ░  ░░ ░░ ░ ░ ▒   ░    ░  ▒ ░  ░   ▒   \r\n\t\t\t            ░  ░  ░    ░ ░   ░          ░ ░            ░  ░  ░    ░ ░   ░       ░        ░  ░\r\n\t\t\t                                  ░                                          ░               ");
             Console.WriteLine("------------------------------------------------------------------------------------------------------------------------------------------------------\n\n\n");
 
             Console.Beep(600, 3000);
 
-            //Game Start
-
-            Thread.Sleep(400);
-            Console.Clear();
-            Console.Write("\t\t\t\t\t\t\t\t ");
-            Console.BackgroundColor = ConsoleColor.Green;
-            Console.ForegroundColor = ConsoleColor.Black;
-            Console.Write(":|ARTEMIS CONSOLE|:");
-            Console.BackgroundColor = ConsoleColor.Black;
-            Console.ForegroundColor = ConsoleColor.Gray;
-            Console.WriteLine("\n");
-            Thread.Sleep(3500);
-            choices001();
+            start();//Game Start
         }
 
-        private static void choices001()
+        private static void start()
         {
+            Thread.Sleep(400);
+            Console.Clear();
+            Thread.Sleep(3500);
+
+
             lbl("Hello..."); Thread.Sleep(1700);
             lbl("\nWhat brings you here?"); end();
-            lbl("\nDon't answer that!", 30); Thread.Sleep(100); lbl(" We have not much time,"); Thread.Sleep(70); lbl(" and so much fun!"); end();
-            lbl("\nWho am I?"); comma(); lbl(" That's not important..."); end();
-            lbl("\nThe real question at hand..."); comma(); lbl(" is simple..."); end();
-            lbl("\nWhat Room Do You DARE Enter On This "); Thread.Sleep(800); Console.Write("Cold, "); Thread.Sleep(800); Console.Write("Dark, "); Thread.Sleep(800); Console.Write("Rainy, "); Thread.Sleep(500);  Console.Write("Day...\n\n");
+            lbl("Don't answer that!", 30); Thread.Sleep(100); lbl(" We have not much time,"); Thread.Sleep(70); lbl(" and so much fun!"); end();
+            lbl("Who am I?"); comma(); lbl(" That's not important..."); end();
+            lbl("The real question at hand..."); comma(); lbl(" is simple..."); end();
+            lbl("What Room Do You DARE Enter On This "); Thread.Sleep(800); Console.Write("Cold, "); Thread.Sleep(800); Console.Write("Dark, "); Thread.Sleep(800); Console.Write("Rainy, "); Thread.Sleep(500);  Console.Write("Day...\n\n");
             Thread.Sleep(1000);
             Console.BackgroundColor = ConsoleColor.Black;
             Console.ForegroundColor = ConsoleColor.DarkGray;
@@ -324,7 +321,7 @@ namespace Text_Adventure //Entamaphobia
             if (input == 'd')
             {
                 Console.Clear();
-                lbl("\n\nYou Enter The Dark Room With The "); Console.ForegroundColor = ConsoleColor.DarkBlue; Console.Write("Water"); Console.ForegroundColor = ConsoleColor.DarkGray; lbl(" On The Floor\n");
+                lbl("\n\nYou Enter The Dark Room With The "); Console.ForegroundColor = ConsoleColor.DarkBlue; plainlbl("Water"); Console.ForegroundColor = ConsoleColor.DarkGray; lbl(" On The Floor\n");
                 Thread.Sleep(2500);
 
                 Thread.Sleep(500);
@@ -333,18 +330,27 @@ namespace Text_Adventure //Entamaphobia
             else if (input == 'l')
             {
                 Console.Clear();
-                lbl("You Enter The Room With Just A "); Console.ForegroundColor = ConsoleColor.Yellow; Console.WriteLine("Lightbulb");
+                lbl("You Enter The Room With Just A "); Console.ForegroundColor = ConsoleColor.Yellow; plainlbl("Lightbulb");
                 Thread.Sleep(2500);
                 lbl("\n\nYou Step Inside And Notice That There Was Never A Door..."); end();
-                plbl("\n\"How?\""); comma();
+                plbl("\"How?\""); comma();
                 lbl(" you ask yourself, "); comma(); lbl("but then quickly focus on a vivid sound you hear..."); end();
-                plbl("\n\"That was weird...\""); end();
-                lbl("\nWhile trying to figure out what you heard, "); comma(); lbl("you notice that there is a soft wavy fabric making up what is the wall in front of you."); end();
-                lbl("\nWith the dim lighting from the lightbulb, "); Thread.Sleep(500); lbl("you can see that the fabric is some sort of "); Console.ForegroundColor = ConsoleColor.DarkRed; Console.Write("Dark Red"); lbl(" color."); end();
-                lbl("\nSuddenly you hear the sound again,"); Thread.Sleep(500); lbl(" but this time you can clearly hear it..."); end();
-                lbl("\nThe sound is a booming voice, "); comma(); lbl("on what seems to be a giant sound system..."); end();
-                albl("\"I know you guys have not had the best exerience today,"); comma(); albl(" but this next act should be the best performance you have "); Thread.Sleep(200); albl("EVER "); Thread.Sleep(200); albl("seen"); end();
-                lbl(""); Thread.Sleep(1); Console.WriteLine(textInfo.ToTitleCase("")); Thread.Sleep(1000000000);
+                plbl("\"That was weird...\""); end();
+                lbl("While trying to figure out what you heard, "); comma(); lbl("you notice that there is a soft wavy fabric making up what is the wall in front of you."); end();
+                lbl("With the dim lighting from the lightbulb, "); Thread.Sleep(500); lbl("you can see that the fabric is some sort of "); Console.ForegroundColor = ConsoleColor.DarkRed; plainlbl("Dark Red"); lbl(" color."); end();
+                lbl("Suddenly you hear the sound again,"); Thread.Sleep(500); lbl(" but this time you can clearly hear it..."); end();
+                lbl("The sound is a booming voice, "); comma(); lbl("on what seems to be a giant sound system..."); end();
+                albl("\"I know you guys have not had the best experience today,"); comma(); albl(" but this next act should be the best performance you have "); Thread.Sleep(200); albl("EVER "); Thread.Sleep(200); albl("seen\""); end();
+                lbl("You now quickly undurestand that this \"room\" you're in,"); comma(); lbl(" is actually a stage."); end();
+                lbl("your body pulses with chills from your legs up to your neck..."); end();
+                plbl("Oh no..."); end();
+                lbl("You're reminded of the time when your childhood thearapist diagnosed you with Glossophobia."); end();
+                lbl("Before you can even move as much as one muscle,"); comma(); lbl(" the curtain splits into two,"); comma(); lbl(" presenting you to the audience."); end();
+                lbl("For a short period of time,"); comma(); lbl(" you are blinded by the stage lights blaring into your eyes."); end();
+                albl("\"Let's give our new host a round of applause,"); comma(); albl("shall we?\""); end();
+                lbl("you can feel your heart beating through your chest once you see the stern,"); comma(); lbl(" unpleased, "); comma(); lbl("judgemental crowd that clearly,"); comma(); lbl("\nas the announcer had said, "); comma(); lbl("has not had the best experience today."); end();
+                lbl("\n\nYou are now stuck with the following options:"); lbl("\n[m]  say that this was all a mistake,"); end(); lbl("[j]  or start telling some jokes already");
+                lightbulb();
 
                 Thread.Sleep(500);
                 lightbulb();
@@ -352,7 +358,7 @@ namespace Text_Adventure //Entamaphobia
             else if (input == 'b')
             {
                 Console.Clear();
-                lbl("\n\nYou Enter The "); Console.ForegroundColor = ConsoleColor.Red; Console.Write("Bloody"); Console.ForegroundColor = ConsoleColor.DarkGray; lbl(" Room\n");
+                lbl("\n\nYou Enter The "); Console.ForegroundColor = ConsoleColor.Red; plainlbl("Bloody"); Console.ForegroundColor = ConsoleColor.DarkGray; lbl(" Room\n");
                 Thread.Sleep(2500);
 
                 Thread.Sleep(500);
@@ -361,7 +367,7 @@ namespace Text_Adventure //Entamaphobia
             else if (input == 'c')
             {
                 Console.Clear();
-                lbl("\n\nYou Enter The "); Console.ForegroundColor = ConsoleColor.Red; Console.Write("C"); Console.ForegroundColor = ConsoleColor.DarkYellow; Console.Write("l"); Console.ForegroundColor = ConsoleColor.Green; Console.Write("o"); Console.ForegroundColor = ConsoleColor.Blue; Console.Write("w"); Console.ForegroundColor = ConsoleColor.DarkMagenta; Console.Write("n"); Console.ForegroundColor = ConsoleColor.DarkGray; lbl(" Room\n\n");
+                lbl("\n\nYou Enter The "); Thread.Sleep(48); Console.ForegroundColor = ConsoleColor.Red; Console.Write("C"); Thread.Sleep(48); Console.ForegroundColor = ConsoleColor.DarkYellow; Console.Write("l"); Thread.Sleep(48); Console.ForegroundColor = ConsoleColor.Green; Console.Write("o"); Thread.Sleep(48); Console.ForegroundColor = ConsoleColor.Blue; Console.Write("w"); Thread.Sleep(48); Console.ForegroundColor = ConsoleColor.DarkMagenta; Console.Write("n"); Thread.Sleep(48); Console.ForegroundColor = ConsoleColor.DarkGray; lbl(" Room\n\n");
                 Thread.Sleep(2500);
 
                 Thread.Sleep(500);
@@ -377,21 +383,77 @@ namespace Text_Adventure //Entamaphobia
             }
         }
 
-        private static void water()//d
+        private static void water()
         {
+            char input = Console.ReadKey().KeyChar;
+            if (input == 'm')
+            {
 
-        }
-        private static void lightbulb()//l
-        {
+            }
+            else if (input == 'j')
+            {
 
-        }
-        private static void blood()//b
-        {
+            }
+            else
+            {
 
+            }
         }
-        private static void clown()//c
+        private static void lightbulb()
         {
-            
+            Thread sleep = new Thread(() =>
+            {
+                Thread.Sleep(4000);
+                lbl("boom");
+            });
+            sleep.Start();
+            String input = Console.ReadLine();
+            if (input == "m")
+            {
+                sleep.Abort();
+                lbl("no boom");
+            }
+            else if (input == "j")
+            {
+                sleep.Abort();
+                 lbl("no boom");
+            }
+            else
+            {
+                
+            }
+        }
+        private static void blood()
+        {
+            String input = Console.ReadLine();
+            if (input == "m")
+            {
+
+            }
+            else if (input == "j")
+            {
+
+            }
+            else
+            {
+
+            }
+        }
+        private static void clown()
+        {
+            String input = Console.ReadLine();
+            if (input == "m")
+            {
+
+            }
+            else if (input == "j")
+            {
+
+            }
+            else
+            {
+
+            }
         }
     }
 }
