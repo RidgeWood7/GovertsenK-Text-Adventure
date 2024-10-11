@@ -13,14 +13,14 @@ namespace Text_Adventure //Entamaphobia
 
         static void end()
         {
-            Thread.Sleep(900);
+            Thread.Sleep(0);
             Console.Write("\n");
         }//900
         static void comma()
         {
-            Thread.Sleep(500);
+            Thread.Sleep(0);
         }//500
-        static void lbl(string text, int delay = 48)//regular w/ dark grey color of text ALL ARE 48 Speed
+        static void lbl(string text, int delay = 0)//regular w/ dark grey color of text ALL ARE 48 Speed
         {
             text = textInfo.ToTitleCase(text);
 
@@ -343,16 +343,17 @@ namespace Text_Adventure //Entamaphobia
                 albl("\"I know you guys have not had the best experience today,"); comma(); albl(" but this next act should be the best performance you have "); Thread.Sleep(200); albl("EVER "); Thread.Sleep(200); albl("seen\""); end();
                 lbl("You now quickly undurestand that this \"room\" you're in,"); comma(); lbl(" is actually a stage."); end();
                 lbl("your body pulses with chills from your legs up to your neck..."); end();
-                plbl("Oh no..."); end();
+                plbl("\"Oh no...\""); end();
                 lbl("You're reminded of the time when your childhood thearapist diagnosed you with Glossophobia."); end();
                 lbl("Before you can even move as much as one muscle,"); comma(); lbl(" the curtain splits into two,"); comma(); lbl(" presenting you to the audience."); end();
                 lbl("For a short period of time,"); comma(); lbl(" you are blinded by the stage lights blaring into your eyes."); end();
-                albl("\"Let's give our new host a round of applause,"); comma(); albl("shall we?\""); end();
+                lbl("After your eyes adjust to the lighting,"); comma(); lbl(" and you take a look around."); end();
                 lbl("you can feel your heart beating through your chest once you see the stern,"); comma(); lbl(" unpleased, "); comma(); lbl("judgemental crowd that clearly,"); comma(); lbl("\nas the announcer had said, "); comma(); lbl("has not had the best experience today."); end();
-                lbl("\n\nYou are now stuck with the following options:"); lbl("\n[m]  say that this was all a mistake,"); end(); lbl("[j]  or start telling some jokes already");
-                lightbulb();
-
+                albl("\"Let's give our new host a round of applause,"); comma(); albl(" shall we?\""); end();
+                lbl("\n\nYou are now stuck with the following options:"); end(); lbl("say nothing <-[n]---[j]-> "); lbl("or start telling some jokes already"); end();
+                
                 Thread.Sleep(500);
+                Console.ForegroundColor = ConsoleColor.Black;
                 lightbulb();
             }
             else if (input == 'b')
@@ -373,24 +374,16 @@ namespace Text_Adventure //Entamaphobia
                 Thread.Sleep(500);
                 clown();
             }
-            else
-            {
-                lbl("pick again... [d] | [l] | [b] | [c]\n\n");
-                Thread.Sleep(500);
-                Console.Write("  .   .   .  ");
-                Console.ForegroundColor = ConsoleColor.Black;
-                choice1();
-            }
         }
 
         private static void water()
         {
             char input = Console.ReadKey().KeyChar;
-            if (input == 'm')
+            if (input == 'k')
             {
 
             }
-            else if (input == 'j')
+            else if (input == 'k')
             {
 
             }
@@ -401,36 +394,44 @@ namespace Text_Adventure //Entamaphobia
         }
         private static void lightbulb()
         {
-            Thread sleep = new Thread(() =>
+            char input = Console.ReadKey().KeyChar;
+            if (input == 'n')
             {
-                Thread.Sleep(4000);
-                lbl("boom");
-            });
-            sleep.Start();
-            String input = Console.ReadLine();
-            if (input == "m")
-            {
-                sleep.Abort();
-                lbl("no boom");
+                lbl("\nYou freeze in terror,"); comma(); lbl("not knowing what to asy..."); end();
+                albl("\n\"Well..."); comma(); albl("why am i not surprised...\""); end();
+                lbl("\n"); comma(); lbl(""); end();
+                lbl("\n"); comma(); lbl(""); end();
+                lbl("\n"); comma(); lbl(""); end();
+                lbl("\n"); comma(); lbl(""); end();
+
+                Thread.Sleep(500);
+                Console.ForegroundColor = ConsoleColor.Black;
             }
-            else if (input == "j")
+            else if (input == 'j')
             {
-                sleep.Abort();
-                 lbl("no boom");
+                lbl("\n"); comma(); lbl(""); end();
+                lbl("\n"); comma(); lbl(""); end();
+                lbl("\n"); comma(); lbl(""); end();
+                lbl("\n"); comma(); lbl(""); end();
+                lbl("\n"); comma(); lbl(""); end();
+                lbl("\n"); comma(); lbl(""); end();
+
+                Thread.Sleep(500);
+
             }
             else
             {
-                
+                lightbulb();
             }
         }
         private static void blood()
         {
-            String input = Console.ReadLine();
-            if (input == "m")
+            char input = Console.ReadKey().KeyChar;
+            if (input == 'k')
             {
 
             }
-            else if (input == "j")
+            else if (input == 'k')
             {
 
             }
@@ -441,12 +442,12 @@ namespace Text_Adventure //Entamaphobia
         }
         private static void clown()
         {
-            String input = Console.ReadLine();
-            if (input == "m")
+            char input = Console.ReadKey().KeyChar;
+            if (input == 'k')
             {
 
             }
-            else if (input == "j")
+            else if (input == 'k')
             {
 
             }
