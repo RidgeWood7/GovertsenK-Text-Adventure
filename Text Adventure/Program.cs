@@ -13,14 +13,14 @@ namespace Text_Adventure //Entamaphobia
 
         static void end()
         {
-            Thread.Sleep(0);
+            Thread.Sleep(900);
             Console.Write("\n");
         }//900
         static void comma()
         {
-            Thread.Sleep(0);
+            Thread.Sleep(500);
         }//500
-        static void lbl(string text, int delay = 0)//regular w/ dark grey color of text ALL ARE 48 Speed
+        static void lbl(string text, int delay = 48)//regular w/ dark grey color of text ALL ARE 48 Speed
         {
             text = textInfo.ToTitleCase(text);
 
@@ -39,6 +39,18 @@ namespace Text_Adventure //Entamaphobia
             {
                 Console.Write(text[i]);
                 Thread.Sleep(delay);
+            }
+        }
+        static void blbl(string text, int delay = 55)//red for blood level
+        {
+            text = textInfo.ToTitleCase(text);
+
+            for (int i = 0; i < text.Length; i++)
+            {
+                Console.ForegroundColor= ConsoleColor.DarkRed;                
+                Console.Write(text[i]);
+                Thread.Sleep(delay);
+                Console.ForegroundColor = ConsoleColor.DarkGray;
             }
         }
         static void albl(string text, int delay = 45)//grey for lightbulb level
@@ -65,6 +77,10 @@ namespace Text_Adventure //Entamaphobia
                 Console.ForegroundColor= ConsoleColor.DarkGray;
             }
         }
+        static public float lightGreen = 0;
+        static public float waterGreen = 0;
+        static public float bloodGreen = 0;
+        static public float clownGreen = 0;
 
 
         static void Main(string[] args)
@@ -74,7 +90,10 @@ namespace Text_Adventure //Entamaphobia
             Console.WindowWidth = 150;
             Console.CursorVisible = false;
             //intro();
-            start();
+            //start();
+            choice1();
+            //lightbulb();
+            //win();
         }
 
         private static void intro()
@@ -297,6 +316,20 @@ namespace Text_Adventure //Entamaphobia
             lbl("The real question at hand..."); comma(); lbl(" is simple..."); end();
             lbl("What Room Do You DARE Enter On This "); Thread.Sleep(800); Console.Write("Cold, "); Thread.Sleep(800); Console.Write("Dark, "); Thread.Sleep(800); Console.Write("Rainy, "); Thread.Sleep(500);  Console.Write("Day...\n\n");
             Thread.Sleep(1000);
+        }
+        private static void prechoice()
+        {
+            if (lightGreen == 1 && waterGreen == 1 && bloodGreen == 1 && clownGreen == 1)
+            {
+                win();
+            }
+            else
+            {
+                choice1();
+            }
+        }
+        private static void choice1()
+        {
             Console.BackgroundColor = ConsoleColor.Black;
             Console.ForegroundColor = ConsoleColor.DarkGray;
             Console.Beep(700, 200);
@@ -307,26 +340,35 @@ namespace Text_Adventure //Entamaphobia
             Thread.Sleep(2000);
             Console.Beep(97, 350);
             Console.Write("[b]  The "); Console.ForegroundColor = ConsoleColor.Red; Console.Write("Bloody"); Console.ForegroundColor = ConsoleColor.DarkGray; Console.WriteLine(" Room\n");
-            Thread.Sleep(2000);
+            /*Thread.Sleep(2000);
             Console.Beep(700, 200);
             Console.Write("[c]  The "); Console.ForegroundColor = ConsoleColor.Red; Console.Write("C"); Console.ForegroundColor = ConsoleColor.DarkYellow; Console.Write("l"); Console.ForegroundColor = ConsoleColor.Green; Console.Write("o"); Console.ForegroundColor = ConsoleColor.Blue; Console.Write("w"); Console.ForegroundColor = ConsoleColor.DarkMagenta; Console.Write("n"); Console.ForegroundColor = ConsoleColor.DarkGray; Console.Write(" Room\n\n");
+            */
             Thread.Sleep(500);
             Console.Write("  .   .   .  ");
             Console.ForegroundColor = ConsoleColor.Black;
-            choice1();
-        }
-        private static void choice1()
-        {
+
             char input = Console.ReadKey().KeyChar;
             if (input == 'd')
             {
                 Console.Clear();
                 lbl("\n\nYou Enter The Dark Room With The "); Console.ForegroundColor = ConsoleColor.DarkBlue; plainlbl("Water"); Console.ForegroundColor = ConsoleColor.DarkGray; lbl(" On The Floor\n");
                 Thread.Sleep(2500);
+                lbl("\n\nYou Step Inside And Notice That There Was Never A Door..."); end();
+                plbl("\"How?\""); comma();
+                lbl(" you ask yourself, "); comma(); lbl("but then quickly focus on the insane sight you see..."); end();
+                lbl("you are inside of a glass room,"); comma(); lbl(" and you are seemingly in the bottom of the ocean..."); end();
+                lbl("you look in front of you,"); comma(); lbl(" and see a lever that is about 100 feet in front of you..."); end();
+                lbl("you then see that there is a dripping comming from the roof,"); comma(); lbl(" causing the water to collect on the floor."); end();
+                lbl("you look up at the sight at hand, "); comma(); lbl("and you can't believe it..."); end();
+                lbl("it's a dead shark on top of the cracked glass roof..."); end();
+                lbl("you stare for just a second, "); comma(); lbl("but then realize that you have to make a choice quickly..."); end();
+                lbl("\n\nDo you:"); end();
+                lbl("run for the lever and hope it fixes you situation <-[r]---[h]-> or hold the glass from breaking any further"); end();
 
                 Thread.Sleep(500);
                 water();
-            }
+            }//
             else if (input == 'l')
             {
                 Console.Clear();
@@ -355,12 +397,24 @@ namespace Text_Adventure //Entamaphobia
                 Thread.Sleep(500);
                 Console.ForegroundColor = ConsoleColor.Black;
                 lightbulb();
-            }
+            }//
             else if (input == 'b')
             {
                 Console.Clear();
                 lbl("\n\nYou Enter The "); Console.ForegroundColor = ConsoleColor.Red; plainlbl("Bloody"); Console.ForegroundColor = ConsoleColor.DarkGray; lbl(" Room\n");
                 Thread.Sleep(2500);
+                lbl("\n\nYou Step Inside And Notice That There Was Never A Door..."); end();
+                plbl("\"How?\""); comma();
+                lbl(" you ask yourself, "); comma(); lbl("but quickly focus on the man you notice in the corner..."); end();
+                plbl("\"who are you?\""); end();
+                blbl("\"that is not important young blood, "); comma(); blbl("there are much more important questions to be asked...\""); end();
+                plbl("\"uuuummmmmm, "); comma(); plbl("like what?\""); end();
+                lbl("he stares blankly for a while, "); comma(); lbl("but then clocks back into this world..."); end();
+                blbl("\"what is your blood type?\""); comma(); lbl(" he says ignoring your question..."); end();
+                plbl("\"uuummmm, "); comma(); plbl("b positive I guess...\""); end();
+                blbl("\"wrong!\""); comma(); blbl("\"you are an A negative\""); end();
+                blbl("\"now answer me this...\""); comma(); lbl("\"whill you please commit this small blood oath?\""); end();
+                lbl("\n\nYou are now stuck with the following options:"); end(); lbl("say no <-[n]---[y]-> "); lbl("or say yes"); end();
 
                 Thread.Sleep(500);
                 blood();
@@ -370,92 +424,177 @@ namespace Text_Adventure //Entamaphobia
                 Console.Clear();
                 lbl("\n\nYou Enter The "); Thread.Sleep(48); Console.ForegroundColor = ConsoleColor.Red; Console.Write("C"); Thread.Sleep(48); Console.ForegroundColor = ConsoleColor.DarkYellow; Console.Write("l"); Thread.Sleep(48); Console.ForegroundColor = ConsoleColor.Green; Console.Write("o"); Thread.Sleep(48); Console.ForegroundColor = ConsoleColor.Blue; Console.Write("w"); Thread.Sleep(48); Console.ForegroundColor = ConsoleColor.DarkMagenta; Console.Write("n"); Thread.Sleep(48); Console.ForegroundColor = ConsoleColor.DarkGray; lbl(" Room\n\n");
                 Thread.Sleep(2500);
+                lbl("\n\nYou Step Inside And Notice That There Was Never A Door..."); end();
+                plbl("\"How?\""); comma();
+                lbl(" you ask yourself, "); comma(); lbl(""); end();
 
                 Thread.Sleep(500);
                 clown();
             }
+            else
+            {
+                choice1();
+            }
         }
 
+
+        //--------------------------------------------------------------------------------------------------------------------------------------------------
         private static void water()
         {
             char input = Console.ReadKey().KeyChar;
-            if (input == 'k')
+            if (input == 'h')
             {
+                lbl("\n\nyou attempt to save yourself from the water leak, "); comma(); lbl("but it's too late..."); end();
+                lbl("the water comes crashing down on you, "); comma(); lbl("and the dead sharks body crushes you..."); end();
+                
+                Thread.Sleep(1000);
+                Console.Clear();
+                Console.ForegroundColor = ConsoleColor.DarkRed;
+                Console.WriteLine("\n\n\n------------------------------------------------------------------------------------------------------------------------------------------------------");
+                Console.WriteLine("▄▄▄█████▓ ██░ ██  ▄▄▄       ██▓    ▄▄▄        ██████   ██████  ▒█████   ██▓███   ██░ ██  ▒█████   ▄▄▄▄    ██▓ ▄▄▄      \r\n▓  ██▒ ▓▒▓██░ ██▒▒████▄    ▓██▒   ▒████▄    ▒██    ▒ ▒██    ▒ ▒██▒  ██▒▓██░  ██▒▓██░ ██▒▒██▒  ██▒▓█████▄ ▓██▒▒████▄    \r\n▒ ▓██░ ▒░▒██▀▀██░▒██  ▀█▄  ▒██░   ▒██  ▀█▄  ░ ▓██▄   ░ ▓██▄   ▒██░  ██▒▓██░ ██▓▒▒██▀▀██░▒██░  ██▒▒██▒ ▄██▒██▒▒██  ▀█▄  \r\n░ ▓██▓ ░ ░▓█ ░██ ░██▄▄▄▄██ ▒██░   ░██▄▄▄▄██   ▒   ██▒  ▒   ██▒▒██   ██░▒██▄█▓▒ ▒░▓█ ░██ ▒██   ██░▒██░█▀  ░██░░██▄▄▄▄██ \r\n  ▒██▒ ░ ░▓█▒░██▓ ▓█   ▓██▒░██████▒▓█   ▓██▒▒██████▒▒▒██████▒▒░ ████▓▒░▒██▒ ░  ░░▓█▒░██▓░ ████▓▒░░▓█  ▀█▓░██░ ▓█   ▓██▒\r\n  ▒ ░░    ▒ ░░▒░▒ ▒▒   ▓▒█░░ ▒░▓  ░▒▒   ▓▒█░▒ ▒▓▒ ▒ ░▒ ▒▓▒ ▒ ░░ ▒░▒░▒░ ▒▓▒░ ░  ░ ▒ ░░▒░▒░ ▒░▒░▒░ ░▒▓███▀▒░▓   ▒▒   ▓▒█░\r\n    ░     ▒ ░▒░ ░  ▒   ▒▒ ░░ ░ ▒  ░ ▒   ▒▒ ░░ ░▒  ░ ░░ ░▒  ░ ░  ░ ▒ ▒░ ░▒ ░      ▒ ░▒░ ░  ░ ▒ ▒░ ▒░▒   ░  ▒ ░  ▒   ▒▒ ░\r\n  ░       ░  ░░ ░  ░   ▒     ░ ░    ░   ▒   ░  ░  ░  ░  ░  ░  ░ ░ ░ ▒  ░░        ░  ░░ ░░ ░ ░ ▒   ░    ░  ▒ ░  ░   ▒   \r\n          ░  ░  ░      ░  ░    ░  ░     ░  ░      ░        ░      ░ ░            ░  ░  ░    ░ ░   ░       ░        ░  ░\r\n                                                                                                       ░               ");
+                Console.WriteLine("------------------------------------------------------------------------------------------------------------------------------------------------------");
 
+                Thread.Sleep(500);
+                Console.ForegroundColor = ConsoleColor.Black;
             }
-            else if (input == 'k')
+            else if (input == 'r')
             {
-
+                lbl("you sprint for the lever, "); comma(); lbl("and as you are running, "); comma(); lbl("the glass breaks behind you..."); end();
+                lbl("you hear the crashing sound behind you, "); comma(); lbl("and you feel the water rushing under your feet."); end();
+                lbl("as you finally reach the lever, "); comma(); lbl("the water reaches up to your knees..."); end();
+                lbl("you switch the lever,"); comma(); lbl(" and the water drains..."); end();
+                lbl("you then notice a green light on the floor thats just has turned green,"); comma(); lbl(" and you instantly teleport back to the main room..."); end();
+                waterGreen = 1;
+                prechoice();
             }
-            else
-            {
-
-            }
-        }
+        }//
         private static void lightbulb()
         {
             char input = Console.ReadKey().KeyChar;
             if (input == 'n')
             {
-                lbl("\nYou freeze in terror,"); comma(); lbl("not knowing what to asy..."); end();
-                albl("\n\"Well..."); comma(); albl("why am i not surprised...\""); end();
-                lbl("\n"); comma(); lbl(""); end();
-                lbl("\n"); comma(); lbl(""); end();
-                lbl("\n"); comma(); lbl(""); end();
-                lbl("\n"); comma(); lbl(""); end();
+                lbl("\n\nYou freeze in terror,"); comma(); lbl(" not knowing what to say..."); end();
+                albl("\"Well..."); comma(); albl(" why am i not surprised...\""); end();
+                lbl("The crowd remains quiet,"); comma(); lbl(" but the tension rises from 0 to 100 within miliseconds"); end();
+                albl("\"Looks like we got annother quitter on our hands,"); comma(); albl(" let's show them the way out...\""); end();
+                lbl("you hear a faint click,"); comma(); lbl(" and the floor below you divides into two."); end();
+                lbl("you fall for a solid ten seconds,"); comma(); lbl(" and your mind falls into the darkness"); end();
+                Thread.Sleep(1000); 
+                Console.Clear();
+                Console.ForegroundColor = ConsoleColor.DarkRed;
+                Console.WriteLine("\n\n\n------------------------------------------------------------------------------------------------------------------------------------------------------");
+                Console.WriteLine("\t\t\t  ▄████  ██▓     ▒█████    ██████   ██████  ▒█████   ██▓███   ██░ ██  ▒█████   ▄▄▄▄    ██▓ ▄▄▄      \r\n\t\t\t ██▒ ▀█▒▓██▒    ▒██▒  ██▒▒██    ▒ ▒██    ▒ ▒██▒  ██▒▓██░  ██▒▓██░ ██▒▒██▒  ██▒▓█████▄ ▓██▒▒████▄    \r\n\t\t\t▒██░▄▄▄░▒██░    ▒██░  ██▒░ ▓██▄   ░ ▓██▄   ▒██░  ██▒▓██░ ██▓▒▒██▀▀██░▒██░  ██▒▒██▒ ▄██▒██▒▒██  ▀█▄  \r\n\t\t\t░▓█  ██▓▒██░    ▒██   ██░  ▒   ██▒  ▒   ██▒▒██   ██░▒██▄█▓▒ ▒░▓█ ░██ ▒██   ██░▒██░█▀  ░██░░██▄▄▄▄██ \r\n\t\t\t░▒▓███▀▒░██████▒░ ████▓▒░▒██████▒▒▒██████▒▒░ ████▓▒░▒██▒ ░  ░░▓█▒░██▓░ ████▓▒░░▓█  ▀█▓░██░ ▓█   ▓██▒\r\n\t\t\t ░▒   ▒ ░ ▒░▓  ░░ ▒░▒░▒░ ▒ ▒▓▒ ▒ ░▒ ▒▓▒ ▒ ░░ ▒░▒░▒░ ▒▓▒░ ░  ░ ▒ ░░▒░▒░ ▒░▒░▒░ ░▒▓███▀▒░▓   ▒▒   ▓▒█░\r\n\t\t\t  ░   ░ ░ ░ ▒  ░  ░ ▒ ▒░ ░ ░▒  ░ ░░ ░▒  ░ ░  ░ ▒ ▒░ ░▒ ░      ▒ ░▒░ ░  ░ ▒ ▒░ ▒░▒   ░  ▒ ░  ▒   ▒▒ ░\r\n\t\t\t░ ░   ░   ░ ░   ░ ░ ░ ▒  ░  ░  ░  ░  ░  ░  ░ ░ ░ ▒  ░░        ░  ░░ ░░ ░ ░ ▒   ░    ░  ▒ ░  ░   ▒   \r\n\t\t\t      ░     ░  ░    ░ ░        ░        ░      ░ ░            ░  ░  ░    ░ ░   ░       ░        ░  ░\r\n\t\t\t                                                                                    ░               ");
+                Console.WriteLine("------------------------------------------------------------------------------------------------------------------------------------------------------");
 
                 Thread.Sleep(500);
                 Console.ForegroundColor = ConsoleColor.Black;
             }
             else if (input == 'j')
             {
-                lbl("\n"); comma(); lbl(""); end();
-                lbl("\n"); comma(); lbl(""); end();
-                lbl("\n"); comma(); lbl(""); end();
-                lbl("\n"); comma(); lbl(""); end();
-                lbl("\n"); comma(); lbl(""); end();
-                lbl("\n"); comma(); lbl(""); end();
+                lbl("\n\ntype joke here --->  ");
 
-                Thread.Sleep(500);
-
+                joke();
             }
             else
             {
                 lightbulb();
             }
-        }
-        private static void blood()
+        }//
+        private static void blood()//
         {
             char input = Console.ReadKey().KeyChar;
-            if (input == 'k')
+            if (input == 'y')
             {
+                lbl("NO!"); end();
+                lbl("never ever ever do blood oaths with stangers."); end();
+                lbl("only friends!"); end();
+                Thread.Sleep(1000);
+                Console.Clear();
+                Console.ForegroundColor = ConsoleColor.DarkRed;
+                Console.WriteLine("\n\n\n------------------------------------------------------------------------------------------------------------------------------------------------------");
+                Console.WriteLine("\t\t\t ██░ ██ ▓█████  ███▄ ▄███▓ ▒█████   ██▓███   ██░ ██  ▒█████   ▄▄▄▄    ██▓ ▄▄▄      \r\n\t\t\t▓██░ ██▒▓█   ▀ ▓██▒▀█▀ ██▒▒██▒  ██▒▓██░  ██▒▓██░ ██▒▒██▒  ██▒▓█████▄ ▓██▒▒████▄    \r\n\t\t\t▒██▀▀██░▒███   ▓██    ▓██░▒██░  ██▒▓██░ ██▓▒▒██▀▀██░▒██░  ██▒▒██▒ ▄██▒██▒▒██  ▀█▄  \r\n\t\t\t░▓█ ░██ ▒▓█  ▄ ▒██    ▒██ ▒██   ██░▒██▄█▓▒ ▒░▓█ ░██ ▒██   ██░▒██░█▀  ░██░░██▄▄▄▄██ \r\n\t\t\t░▓█▒░██▓░▒████▒▒██▒   ░██▒░ ████▓▒░▒██▒ ░  ░░▓█▒░██▓░ ████▓▒░░▓█  ▀█▓░██░ ▓█   ▓██▒\r\n\t\t\t ▒ ░░▒░▒░░ ▒░ ░░ ▒░   ░  ░░ ▒░▒░▒░ ▒▓▒░ ░  ░ ▒ ░░▒░▒░ ▒░▒░▒░ ░▒▓███▀▒░▓   ▒▒   ▓▒█░\r\n\t\t\t ▒ ░▒░ ░ ░ ░  ░░  ░      ░  ░ ▒ ▒░ ░▒ ░      ▒ ░▒░ ░  ░ ▒ ▒░ ▒░▒   ░  ▒ ░  ▒   ▒▒ ░\r\n\t\t\t ░  ░░ ░   ░   ░      ░   ░ ░ ░ ▒  ░░        ░  ░░ ░░ ░ ░ ▒   ░    ░  ▒ ░  ░   ▒   \r\n\t\t\t ░  ░  ░   ░  ░       ░       ░ ░            ░  ░  ░    ░ ░   ░       ░        ░  ░\r\n\t\t\t                                                                   ░               ");
+                Console.WriteLine("------------------------------------------------------------------------------------------------------------------------------------------------------");
 
+                Thread.Sleep(500);
+                Console.ForegroundColor = ConsoleColor.Black;
             }
-            else if (input == 'k')
+            else if (input == 'n')
             {
-
-            }
-            else
-            {
-
+                lbl("Good job!"); end();
+                lbl("never ever ever do blood oaths with stangers."); end();
+                lbl("only friends!"); end();
+                lbl("you then notice a green light turn on in the corner of the room,"); comma(); lbl(" and you instantly teleport back to the main room..."); end();
+                bloodGreen = 1;
+                prechoice();
             }
         }
         private static void clown()
         {
             char input = Console.ReadKey().KeyChar;
-            if (input == 'k')
+            if (input == '-')
             {
+                lbl("\n\n,"); comma(); lbl(""); end();
+                
+                Console.Clear();
+                Console.ForegroundColor = ConsoleColor.DarkRed;
+                Console.WriteLine("\n\n\n------------------------------------------------------------------------------------------------------------------------------------------------------");
+                Console.WriteLine("\t\t ▄████▄   ▒█████   █    ██  ██▓     ██▀███   ▒█████   ██▓███   ██░ ██  ▒█████   ▄▄▄▄    ██▓ ▄▄▄      \r\n\t\t▒██▀ ▀█  ▒██▒  ██▒ ██  ▓██▒▓██▒    ▓██ ▒ ██▒▒██▒  ██▒▓██░  ██▒▓██░ ██▒▒██▒  ██▒▓█████▄ ▓██▒▒████▄    \r\n\t\t▒▓█    ▄ ▒██░  ██▒▓██  ▒██░▒██░    ▓██ ░▄█ ▒▒██░  ██▒▓██░ ██▓▒▒██▀▀██░▒██░  ██▒▒██▒ ▄██▒██▒▒██  ▀█▄  \r\n\t\t▒▓▓▄ ▄██▒▒██   ██░▓▓█  ░██░▒██░    ▒██▀▀█▄  ▒██   ██░▒██▄█▓▒ ▒░▓█ ░██ ▒██   ██░▒██░█▀  ░██░░██▄▄▄▄██ \r\n\t\t▒ ▓███▀ ░░ ████▓▒░▒▒█████▓ ░██████▒░██▓ ▒██▒░ ████▓▒░▒██▒ ░  ░░▓█▒░██▓░ ████▓▒░░▓█  ▀█▓░██░ ▓█   ▓██▒\r\n\t\t░ ░▒ ▒  ░░ ▒░▒░▒░ ░▒▓▒ ▒ ▒ ░ ▒░▓  ░░ ▒▓ ░▒▓░░ ▒░▒░▒░ ▒▓▒░ ░  ░ ▒ ░░▒░▒░ ▒░▒░▒░ ░▒▓███▀▒░▓   ▒▒   ▓▒█░\r\n\t\t  ░  ▒     ░ ▒ ▒░ ░░▒░ ░ ░ ░ ░ ▒  ░  ░▒ ░ ▒░  ░ ▒ ▒░ ░▒ ░      ▒ ░▒░ ░  ░ ▒ ▒░ ▒░▒   ░  ▒ ░  ▒   ▒▒ ░\r\n\t\t░        ░ ░ ░ ▒   ░░░ ░ ░   ░ ░     ░░   ░ ░ ░ ░ ▒  ░░        ░  ░░ ░░ ░ ░ ▒   ░    ░  ▒ ░  ░   ▒   \r\n\t\t░ ░          ░ ░     ░         ░  ░   ░         ░ ░            ░  ░  ░    ░ ░   ░       ░        ░  ░\r\n\t\t░                                                                                    ░               ");
+                Console.WriteLine("------------------------------------------------------------------------------------------------------------------------------------------------------");
 
+                Thread.Sleep(500);
+                Console.ForegroundColor = ConsoleColor.Black;
             }
-            else if (input == 'k')
+            else if (input == '-')
             {
+                lbl(", "); comma(); lbl(""); end();
+                lbl("you then notice a green light turn on ----------,"); comma(); lbl(" and you instantly teleport back to the main room..."); end();
+                clownGreen = 1;
+                prechoice();
+            }
+        }
+        private static void joke()
+        {
+            String input = Console.ReadLine();
+            if (input == "no")
+            {
+                lbl("\n\nYou freeze in terror,"); comma(); lbl(" not knowing what to say..."); end();
+                albl("\"Well..."); comma(); albl(" why am i not surprised...\""); end();
+                lbl("The crowd remains quiet,"); comma(); lbl(" but the tension rises from 0 to 100 within miliseconds"); end();
+                albl("\"Looks like we got annother quitter on our hands,"); comma(); albl(" let's show them the way out...\""); end();
+                lbl("you hear a faint click,"); comma(); lbl(" and the floor below you divides into two."); end();
+                lbl("you fall for a solid ten seconds,"); comma(); lbl(" and your mind falls into the darkness"); end();
+                Thread.Sleep(1000);
+                Console.Clear();
+                Console.ForegroundColor = ConsoleColor.DarkRed;
+                Console.WriteLine("\n\n\n------------------------------------------------------------------------------------------------------------------------------------------------------");
+                Console.WriteLine("\t\t\t  ▄████  ██▓     ▒█████    ██████   ██████  ▒█████   ██▓███   ██░ ██  ▒█████   ▄▄▄▄    ██▓ ▄▄▄      \r\n\t\t\t ██▒ ▀█▒▓██▒    ▒██▒  ██▒▒██    ▒ ▒██    ▒ ▒██▒  ██▒▓██░  ██▒▓██░ ██▒▒██▒  ██▒▓█████▄ ▓██▒▒████▄    \r\n\t\t\t▒██░▄▄▄░▒██░    ▒██░  ██▒░ ▓██▄   ░ ▓██▄   ▒██░  ██▒▓██░ ██▓▒▒██▀▀██░▒██░  ██▒▒██▒ ▄██▒██▒▒██  ▀█▄  \r\n\t\t\t░▓█  ██▓▒██░    ▒██   ██░  ▒   ██▒  ▒   ██▒▒██   ██░▒██▄█▓▒ ▒░▓█ ░██ ▒██   ██░▒██░█▀  ░██░░██▄▄▄▄██ \r\n\t\t\t░▒▓███▀▒░██████▒░ ████▓▒░▒██████▒▒▒██████▒▒░ ████▓▒░▒██▒ ░  ░░▓█▒░██▓░ ████▓▒░░▓█  ▀█▓░██░ ▓█   ▓██▒\r\n\t\t\t ░▒   ▒ ░ ▒░▓  ░░ ▒░▒░▒░ ▒ ▒▓▒ ▒ ░▒ ▒▓▒ ▒ ░░ ▒░▒░▒░ ▒▓▒░ ░  ░ ▒ ░░▒░▒░ ▒░▒░▒░ ░▒▓███▀▒░▓   ▒▒   ▓▒█░\r\n\t\t\t  ░   ░ ░ ░ ▒  ░  ░ ▒ ▒░ ░ ░▒  ░ ░░ ░▒  ░ ░  ░ ▒ ▒░ ░▒ ░      ▒ ░▒░ ░  ░ ▒ ▒░ ▒░▒   ░  ▒ ░  ▒   ▒▒ ░\r\n\t\t\t░ ░   ░   ░ ░   ░ ░ ░ ▒  ░  ░  ░  ░  ░  ░  ░ ░ ░ ▒  ░░        ░  ░░ ░░ ░ ░ ▒   ░    ░  ▒ ░  ░   ▒   \r\n\t\t\t      ░     ░  ░    ░ ░        ░        ░      ░ ░            ░  ░  ░    ░ ░   ░       ░        ░  ░\r\n\t\t\t                                                                                    ░               ");
+                Console.WriteLine("------------------------------------------------------------------------------------------------------------------------------------------------------");
 
+                Thread.Sleep(500);
+                Console.ForegroundColor = ConsoleColor.Black;
             }
             else
             {
-
+                lbl("the crowd stares at you, "); comma(); lbl("but seems glad that you had the guts to even speak."); end();
+                lbl("you then notice a green light turn on in the distance,"); comma(); lbl(" and you instantly teleport back to the main room..."); end();
+                lightGreen = 1;
+                prechoice();
             }
-        }
+        }//
+        private static void win()
+        {
+            Console.Clear(); Thread.Sleep(2000);
+            lbl("wow,"); comma(); lbl(" you did it..."); end();
+            lbl("you're no longer afraid..."); comma(); lbl(" of anything..."); end();
+            lbl("you win..."); comma(); lbl(" I guess..."); end();
+            Thread.Sleep(1000);
+            Console.WriteLine("\n\n\n------------------------------------------------------------------------------------------------------------------------------------------------------");
+            Console.WriteLine("\t\t\t\t▄▄▄█████▓ ██░ ██ ▓█████    ▓█████  ███▄    █ ▓█████▄ \r\n\t\t\t\t▓  ██▒ ▓▒▓██░ ██▒▓█   ▀    ▓█   ▀  ██ ▀█   █ ▒██▀ ██▌\r\n\t\t\t\t▒ ▓██░ ▒░▒██▀▀██░▒███      ▒███   ▓██  ▀█ ██▒░██   █▌\r\n\t\t\t\t░ ▓██▓ ░ ░▓█ ░██ ▒▓█  ▄    ▒▓█  ▄ ▓██▒  ▐▌██▒░▓█▄   ▌\r\n\t\t\t\t  ▒██▒ ░ ░▓█▒░██▓░▒████▒   ░▒████▒▒██░   ▓██░░▒████▓ \r\n\t\t\t\t  ▒ ░░    ▒ ░░▒░▒░░ ▒░ ░   ░░ ▒░ ░░ ▒░   ▒ ▒  ▒▒▓  ▒ \r\n\t\t\t\t    ░     ▒ ░▒░ ░ ░ ░  ░    ░ ░  ░░ ░░   ░ ▒░ ░ ▒  ▒ \r\n\t\t\t\t  ░       ░  ░░ ░   ░         ░      ░   ░ ░  ░ ░  ░ \r\n\t\t\t\t          ░  ░  ░   ░  ░      ░  ░         ░    ░    \r\n\t\t\t\t                                              ░      ");
+            Console.WriteLine("------------------------------------------------------------------------------------------------------------------------------------------------------");
+            
+            Thread.Sleep(500);
+            Console.ForegroundColor = ConsoleColor.Black;
+        }//
     }
 }
 
