@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.VisualBasic;
+using System;
 using System.Diagnostics.Metrics;
 using System.Drawing;
 using System.Globalization;
@@ -7,9 +8,20 @@ using static System.Net.Mime.MediaTypeNames;
 
 namespace Text_Adventure //Entamaphobia
 {
+    /*static struct PlayerData
+    {
+        public int rightChoices;
+        public float mana;
+        public bool alive;
+    }
+    */
     internal class Program
     {
+        /*
+        static 
+
         static TextInfo textInfo = CultureInfo.CurrentCulture.TextInfo;
+        */
 
         static void end()
         {
@@ -89,9 +101,9 @@ namespace Text_Adventure //Entamaphobia
             Console.WindowHeight = 20;
             Console.WindowWidth = 150;
             Console.CursorVisible = false;
-            //intro();
+            intro();
             //start();
-            choice1();
+            //choice1();
             //lightbulb();
             //win();
         }
@@ -319,7 +331,7 @@ namespace Text_Adventure //Entamaphobia
         }
         private static void prechoice()
         {
-            if (lightGreen == 1 && waterGreen == 1 && bloodGreen == 1 && clownGreen == 1)
+            if (lightGreen == 1 && waterGreen == 1 && bloodGreen == 1)
             {
                 win();
             }
@@ -463,7 +475,7 @@ namespace Text_Adventure //Entamaphobia
                 lbl("you hear the crashing sound behind you, "); comma(); lbl("and you feel the water rushing under your feet."); end();
                 lbl("as you finally reach the lever, "); comma(); lbl("the water reaches up to your knees..."); end();
                 lbl("you switch the lever,"); comma(); lbl(" and the water drains..."); end();
-                lbl("you then notice a green light on the floor thats just has turned green,"); comma(); lbl(" and you instantly teleport back to the main room..."); end();
+                lbl("you then notice a light on the floor thats just has turned green,"); comma(); lbl(" and you instantly teleport back to the main room..."); end();
                 waterGreen = 1;
                 prechoice();
             }
@@ -591,10 +603,77 @@ namespace Text_Adventure //Entamaphobia
             Console.WriteLine("\n\n\n------------------------------------------------------------------------------------------------------------------------------------------------------");
             Console.WriteLine("\t\t\t\t▄▄▄█████▓ ██░ ██ ▓█████    ▓█████  ███▄    █ ▓█████▄ \r\n\t\t\t\t▓  ██▒ ▓▒▓██░ ██▒▓█   ▀    ▓█   ▀  ██ ▀█   █ ▒██▀ ██▌\r\n\t\t\t\t▒ ▓██░ ▒░▒██▀▀██░▒███      ▒███   ▓██  ▀█ ██▒░██   █▌\r\n\t\t\t\t░ ▓██▓ ░ ░▓█ ░██ ▒▓█  ▄    ▒▓█  ▄ ▓██▒  ▐▌██▒░▓█▄   ▌\r\n\t\t\t\t  ▒██▒ ░ ░▓█▒░██▓░▒████▒   ░▒████▒▒██░   ▓██░░▒████▓ \r\n\t\t\t\t  ▒ ░░    ▒ ░░▒░▒░░ ▒░ ░   ░░ ▒░ ░░ ▒░   ▒ ▒  ▒▒▓  ▒ \r\n\t\t\t\t    ░     ▒ ░▒░ ░ ░ ░  ░    ░ ░  ░░ ░░   ░ ▒░ ░ ▒  ▒ \r\n\t\t\t\t  ░       ░  ░░ ░   ░         ░      ░   ░ ░  ░ ░  ░ \r\n\t\t\t\t          ░  ░  ░   ░  ░      ░  ░         ░    ░    \r\n\t\t\t\t                                              ░      ");
             Console.WriteLine("------------------------------------------------------------------------------------------------------------------------------------------------------");
-            
+
             Thread.Sleep(500);
             Console.ForegroundColor = ConsoleColor.Black;
         }//
+
+        /*Casting
+
+
+        //type casting
+
+        static double my8ByteNumber = 7.123456789;
+
+        static float my4ByteNumber = (float)my8ByteNumber;
+
+        int my4ByteInteger = (int)my8ByteNumber;
+
+        //System.Convert
+
+        float my4ByteNumberAgain = Convert.ToSingle(my4ByteNumber); //single is annother name for float
+
+        int my4ByteIntegerAgain = Convert.ToInt32(my8ByteNumber);
+        --------------------------------------------------------------------------------------------------------------------------------------------------
+        */
+        /*Operators (+ - / *)
+         * Operands: what you are operating
+         
+         *Arithmetic Operators (+, -, /, *,) {+=, -=, /=, *=} ({++, --}) [ints, floats, doubles]
+        
+        int a = 13;
+        int b = 5;
+        int c = a () b;
+
+        int d = 40;
+        d {} 7;                         ex: d=d+7 SAME AS d+=7
+
+        int f = 9;
+        f({});
+        ({})f;
+
+        string a = "my name is"
+        string b = " Kreston"
+
+        string message = a + b;
+
+
+         *Comparison Operators (<, >) {<=, >=} [!=, ==]
+        
+        int yay = 4;
+        int nay = 3;
+
+        bool yayOrNay = yay () nay;                          [when you write this, it will say "true" or "false"]
+        bool yayOrNay = yay {} nay;                          [when you write this, it will say "true" or "false"]
+        bool yayOrNay = yay [] nay;                          [when you write this, it will say "true" or "false"]
+
+        Ex: bool nayOrYay = yay >= nay; ~ true
+
+         *Boolean Logic Operators (&&)and {||}or [!]not
+
+        Bool microsoftIsCool = true;
+        Bool applePhonesAreCool = true;
+        Bool appleComputersAreCool = false;
+        
+        Bool allAreTrue = microsoftIsCool && applePhonesAreCool && appleComputersAreCool; ~ false
+        Bool oneIsCool = microsoftIsCool || applePhonesAreCool || appleComputersAreCool; ~ true
+        Bool noneAreCool = !microsoftIsCool; ~ false
+
+         
+        */
+        /*Structs
+        
+        */
     }
 }
 
