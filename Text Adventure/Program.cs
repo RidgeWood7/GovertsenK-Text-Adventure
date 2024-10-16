@@ -19,9 +19,9 @@ namespace Text_Adventure //Entamaphobia
     {
         /*
         static 
+        */
 
         static TextInfo textInfo = CultureInfo.CurrentCulture.TextInfo;
-        */
 
         static void end()
         {
@@ -328,6 +328,7 @@ namespace Text_Adventure //Entamaphobia
             lbl("The real question at hand..."); comma(); lbl(" is simple..."); end();
             lbl("What Room Do You DARE Enter On This "); Thread.Sleep(800); Console.Write("Cold, "); Thread.Sleep(800); Console.Write("Dark, "); Thread.Sleep(800); Console.Write("Rainy, "); Thread.Sleep(500);  Console.Write("Day...\n\n");
             Thread.Sleep(1000);
+            prechoice();
         }
         private static void prechoice()
         {
@@ -479,6 +480,10 @@ namespace Text_Adventure //Entamaphobia
                 waterGreen = 1;
                 prechoice();
             }
+            else
+            {
+                water();
+            }
         }//
         private static void lightbulb()
         {
@@ -538,6 +543,10 @@ namespace Text_Adventure //Entamaphobia
                 lbl("you then notice a green light turn on in the corner of the room,"); comma(); lbl(" and you instantly teleport back to the main room..."); end();
                 bloodGreen = 1;
                 prechoice();
+            }
+            else
+            {
+                blood();
             }
         }
         private static void clown()
@@ -728,4 +737,15 @@ static void LBL(string text, int delay = 50)                                    
 - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
 
+*/
+/*
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- 
+|                                                                                                                                                                                                                             |
+|                                                                            TO PLAY AGAIN, PRESS THE "TEXT ADVENTURE" BUTTON                                                                                                 |
+|                                                                                                                                                                                                                             |
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+|                                                                                                                                                                                                                             |
+|                                                                                    !PLEASE DO NOT TOUCH THE CODE!                                                                                                           |
+|                                                                                                                                                                                                                             | 
+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 */
